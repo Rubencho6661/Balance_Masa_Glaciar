@@ -231,14 +231,23 @@ ContourPlot_tmap <- function(df, method, title, brick_raw, shape_list, dem, crsI
       col.scale = tm_scale_continuous(values = rampcols, midpoint = 0),
       col.legend = tm_legend(title = "Balance de masa (m w.e./ año)"),
     )+
-    tm_shape(poly_sf) + tm_borders(lwd = 3) +
+    tm_shape(poly_sf) + tm_borders(lwd = 1) +
     {      if (!is.null(ctr_sf) && nrow(ctr_sf)>0) {
-        tm_shape(ctr_sf) + tm_lines(lwd = 2.2)
+        tm_shape(ctr_sf) + tm_lines(
+          lwd = 1,
+          popup.vars = c("Nivel" = "level", "Área (m²) " = "AREA")
+          ) +
+        tm_shape(ctr_sf) + tm_text(
+          text = "level",
+          size = 0.7,
+          col = "black",
+          along.lines = TRUE
+        )
       } else {
-        NULL # para que tmap no falle
+        NULL 
       }
     } +
-    #tm_title(title) +
+    
     tm_layout(legend.outside = TRUE,
               legend.outside.position = "right",
               frame = FALSE) +

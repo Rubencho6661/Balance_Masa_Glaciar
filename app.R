@@ -100,9 +100,9 @@ ui <- fluidPage(
     sidebarPanel(
       tags$h3("Carga de datos"),
       
-      fileInput("rawData", "Archivo rawData (*.txt o *.csv)", accept = c(".txt", ".csv")),
-      fileInput("shapes", "Shapefiles (sube .shp, .dbf, .shx, .prj)", multiple = TRUE, accept = c(".shp",".dbf",".shx",".prj")),
-      fileInput("dem", "Archivo DEM (*.tif)", accept = ".tif"),
+      fileInput("rawData", "Balance de masa puntual (*.txt o *.csv)", accept = c(".txt", ".csv")),
+      fileInput("shapes", "Superficie Glaciar (sube .shp, .dbf, .shx, .prj)", multiple = TRUE, accept = c(".shp",".dbf",".shx",".prj")),
+      fileInput("dem", "Modelo Digital de Elevaciones (*.tif)", accept = ".tif"),
       fileInput("geodetic", "Balance Geodésico (*.xlsx)", accept = ".xlsx"),
       
       numericInput("range_a", "Rango de cálculo", value = 50, min = 1),
