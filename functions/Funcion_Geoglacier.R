@@ -1,5 +1,5 @@
 Geoglacier <- function(rawData, shapes_path, dem, Resolution, crsID, N.Obs,summit, geodetic_balance, m, wb, temp_dir){
-  source("./functions/Lliboutry_NL.r")
+  source("./functions/Lliboutry_NL.R")
   NLMR<-NLM(rawData, shapes_path, dem, Resolution, crsID, N.Obs, summit,wb)
   e_obs_mod <- NLMR$e_obs_mod
   Nyear <- NLMR$Nyear

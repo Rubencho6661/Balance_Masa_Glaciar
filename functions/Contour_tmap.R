@@ -229,7 +229,7 @@ ContourPlot_tmap <- function(df, method, title, brick_raw, shape_list, dem, crsI
   map <- tm_shape(ai_predic_r) +
     tm_raster(
       col.scale = tm_scale_continuous(values = rampcols, midpoint = 0),
-      col.legend = tm_legend(title = "Balance (m w.e./ año)"),
+      col.legend = tm_legend(title = "Balance de masa (m w.e./ año)"),
     )+
     tm_shape(poly_sf) + tm_borders(lwd = 3) +
     {      if (!is.null(ctr_sf) && nrow(ctr_sf)>0) {
