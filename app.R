@@ -62,12 +62,23 @@ tmap::ttm()
 
 ui <- fluidPage(
   fluidRow(
-    style = "background-color: #24618E; padding: 15px 20px; margin-bottom: 20px;",  # Fondo azul oscuro + algo de padding
+    style = "background-color: #24618E; padding: 15px 20px; margin-bottom: 20px;",
     
     column(
-      width = 4,  
+      width = 9,  
       align = "left",
-      style = "display: flex; align-items: center; gap: 20px;", 
+      style = "display: flex; align-items: center;",  
+      
+      h2(
+        "BALANCE DE MASA GLACIAR",
+        style = "color: white; margin: 0; font-weight: bold;"  
+      )
+    ),
+    
+    column(
+      width = 3,  
+      align = "right",
+      style = "display: flex; align-items: center; justify-content: flex-end; gap: 20px;", 
       
       # Logo 1
       img(
@@ -81,17 +92,6 @@ ui <- fluidPage(
         src = "./logo-yt-blanco.png",
         height = "60px",
         alt = "Logo Yachay"
-      )
-    ),
-    
-    column(
-      width = 9,  # El resto para el título
-      align = "left",
-      style = "display: flex; align-items: center;",  # Alinea verticalmente con los logos
-      
-      h2(
-        "BALANCE DE MASA GLACIAR",
-        style = "color: white; margin: 0; font-weight: bold;"  # Texto blanco, sin margen extra
       )
     )
   ),
