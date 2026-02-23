@@ -127,7 +127,7 @@ ui <- fluidPage(
         ),
         tabPanel("Balance de masa promedio anual",
                  br(),
-                 leafletOutput("contour_map", height = "500px", width = "100%")
+                 leafletOutput("contour_map", height = "500px", width = "100%"),
                  br(),
                  p("Nota: El mapa de contornos muestra el balance de masa promedio anual 
                  interpolado por Kriging a partir de los datos puntuales. 
