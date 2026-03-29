@@ -131,12 +131,8 @@ ui <- fluidPage(
                  br(),
                  p("Nota: El mapa de contornos muestra el balance de masa promedio anual 
                  interpolado por Kriging a partir de los datos puntuales. 
-                 Las áreas con colores más cálidos indican un balance de masa negativo 
-                 (pérdida), mientras que las áreas con colores más fríos indican un balance 
-                 de masa positivo (ganancia). Los contornos representan líneas de igual 
-                 balance de masa, facilitando la visualización de las zonas con diferentes 
-                 tasas de cambio. Este mapa es una herramienta clave para entender la 
-                 dinámica del glaciar y su respuesta al cambio climático.")
+                 Valores negativos indican pérdida, mientras que valores positivos indican
+                 ganancia.")
         ),
         tabPanel("Balance anual",
                  br(),
