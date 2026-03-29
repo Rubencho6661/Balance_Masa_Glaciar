@@ -100,10 +100,10 @@ ui <- fluidPage(
     sidebarPanel(
       tags$h3("Carga de datos"),
       
-      fileInput("rawData", "Balance de masa puntual (*.txt o *.csv)", accept = c(".txt", ".csv")),
-      fileInput("shapes", "Superficie Glaciar (sube .shp, .dbf, .shx, .prj)", multiple = TRUE, accept = c(".shp",".dbf",".shx",".prj")),
-      fileInput("dem", "Modelo Digital de Elevaciones (*.tif)", accept = ".tif"),
-      fileInput("geodetic", "Balance Geodésico (*.xlsx)", accept = ".xlsx"),
+      fileInput("rawData", "Balance de masa puntual (.txt o .csv)", accept = c(".txt", ".csv")),
+      fileInput("shapes", "Superficie Glaciar (.shp, .dbf, .shx, .prj)", multiple = TRUE, accept = c(".shp",".dbf",".shx",".prj")),
+      fileInput("dem", "Modelo Digital de Elevaciones (.tif)", accept = ".tif"),
+      fileInput("geodetic", "Balance Geodésico (.xlsx)", accept = ".xlsx"),
       
       numericInput("range_a", "Rango de cálculo", value = 50, min = 1),
       numericInput("resolution", "Resolución del raster", value = 100),
@@ -118,10 +118,35 @@ ui <- fluidPage(
     
     mainPanel(
       tabsetPanel(
-        tabPanel("Progreso",
-                 div(id = "log-panel",
+        tabPanel("Información y Progreso",
+                  div(id ="info-panel",
+                      style = "background:#e9ecef; border:1px solid #dee2e6; border-radius:8px;
+                             padding:15px; font-family: Arial, sans-serif;",
+                      h4("Instrucciones de uso"),
+                      p("1. Cargue los archivos requeridos en el panel lateral."),
+                      p("   - El archivo de balance puntual debe contener columnas de latitud, longitud, altitud y balance de masa."),
+                      p("       -Formato: fecha  coordenada_X coordenada_Y altitud balance (no incluir encabezados)"),
+                      p("       2000-01-01	817916.836	9946615.416	5575	0.530"),
+                      p("       2000-01-01	817823.067	9946742.497	5475	0.750"),
+                      p("       2000-01-01	817707.090	9946870.812	5375	0.250"),
+                      p("   - El shapefile debe incluir al menos un polígono que represente la superficie del glaciar."),
+                      p("   - El DEM debe estar georreferenciado y cubrir el área del glaciar."),
+                      p("   - El balance geodésico es opcional pero recomendado para mejorar la precisión del modelo, debe estar en formato Excel con columnas de fecha y balance geodésico."),
+                      p("       file	yr_geo_o	yr_geo_f	date_start	date_end	period	diff_yrs	vol	B_geo_tot	B_geo_a	e_geo.tot	e_geo.yr"),
+                      p("       PATH.tif	1990	1999	8/3/1990	9/13/1999	1990_1999	9	-487115.5335	-1.333730744	-0.110894229	0.286242539	0.023686878"),
+                      p("       PATH.tif	2000	2009	8/3/2000	9/13/2009	2000_2009	9	-487125.5335	-1.321730744	-0.114894229	0.268242539	0.024686878"),
+                      br(),
+                      p("IMPORTANTE: Asegúrese de que los archivos estén correctamente formateados y georreferenciados en la misma proyección para evitar errores durante la ejecución del modelo."),
+                      br(),
+                      p("2. Haga clic en 'Ejecutar Modelo' para iniciar el proceso."),
+                      br(),
+                      p("3. Monitoree el progreso y los mensajes de log en esta sección."),
+                      br(),
+                      p("4. Una vez finalizado, podrá descargar los resultados en formato .zip.")
+                  ),
+                  div(id = "log-panel",
                      style = "background:#f8f9fa; border:1px solid #dee2e6; border-radius:8px;
-                            padding:15px; min-height:500px; font-family: monospace;
+                            padding:15px; min-height:100px; font-family: monospace;
                             white-space: pre-wrap; overflow-y:auto;",
                      uiOutput("log_messages"))
         ),
@@ -130,21 +155,29 @@ ui <- fluidPage(
                  leafletOutput("contour_map", height = "500px", width = "100%"),
                  br(),
                  p("Nota: El mapa de contornos muestra el balance de masa promedio anual 
-                 interpolado por Kriging a partir de los datos puntuales. 
+                 interpolado por Kriging a partir de los datos puntuales. Expresado en metros - equivalente de agua por año. 
                  Valores negativos indican pérdida, mientras que valores positivos indican
-                 ganancia.")
+                 ganancia."),
         ),
         tabPanel("Balance anual",
                  br(),
-                 leafletOutput("balance_anual", height = "500px", width = "100%")
+                 leafletOutput("balance_anual", height = "500px", width = "100%"),
+                 br(),
+                 p("Nota: El mapa de contornos muestra el balance de masa promedio anual 
+                 interpolado por Kriging para cada año de análisis. Expresado en metros - equivalente de agua por año. 
+                 Valores negativos indican pérdida, mientras que valores positivos indican
+                 ganancia."),
         ),
         tabPanel("Altura vs. Balance",
                  br(),
-                 plotlyOutput("balance_altura", height = "500px")
+                 plotlyOutput("balance_altura", height = "500px"),
+                 br(),
+                 p("Nota: El gráfico muestra la relación entre la altitud y el balance de masa promedio para los puntos de observación.")
         ),
         tabPanel("Altura vs. Balance por año",
                  br(),
-                 plotlyOutput("balance_altura_anual", height = "500px")
+                 plotlyOutput("balance_altura_anual", height = "500px"),
+                 p("Nota: El gráfico muestra la relación entre la altitud y el balance de masa anual para los puntos de observación.")
         ),
         tabPanel(
           "Soporte instituciones",
