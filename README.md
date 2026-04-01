@@ -18,7 +18,7 @@
 
 ## Descripción general
 
-Esta aplicación implementa el modelo no lineal de Lliboutry para calcular el Balance de Masa Superficial (SMB) de glaciares, con soporte para ajuste geodésico según la metodología de Zemp. Está desplegada en **Posit Connect Cloud** y el cuaderno asociado se encuentra disponible en **Kaggle**.
+Esta aplicación implementa el modelo no lineal de Lliboutry para calcular el Balance de Masa Superficial (SMB) de glaciares, con soporte para ajuste geodésico según la metodología de Zemp. Está desplegada en **Posit Connect Cloud**: https://019c7d8e-6c92-7ae2-a225-954c0f2cd911.share.connect.posit.cloud/
 
 Los resultados se presentan en pestañas interactivas que permiten explorar:
 
@@ -79,28 +79,6 @@ Verifique y ajuste los parámetros en el panel lateral antes de ejecutar el mode
 
 ---
 
-## Estructura del repositorio
-
-```
-balance-masa-glaciar/
-├── app.R                        # Punto de entrada de la app Shiny
-├── Libraries.R                  # Instalación de dependencias
-├── Funcion_Geoglacier.R         # Función principal coordinadora
-├── Lliboutry_NL_shiny.R         # Modelo no lineal de Lliboutry
-├── BrickBuilder_shiny.R         # Construcción de bloques de datos
-├── B_LMf_W_shiny.R              # Método ponderado área/altitud
-├── B_LMf_Idw_shiny.R            # Interpolación IDW
-├── B_LMf_Krg_shiny.R            # Interpolación por Kriging
-├── Reanal_glac_geo_Zemp.R       # Error del balance glaciológico
-├── ContourPlot.R                # Gráficos de líneas de contorno
-├── RasterPlot.R                 # Gráficos raster
-├── Graph_Adj.R                  # Gradiente altitudinal (ajustado)
-├── Graph_NonAdj.R               # Gradiente altitudinal (no ajustado)
-└── data/                        # Datos de prueba (Glaciar Antisana)
-```
-
----
-
 ## Dependencias
 
 Instale todas las dependencias ejecutando `source("Libraries.R")` desde la consola de R.
@@ -130,15 +108,3 @@ reticulate, here, splines, psych
 
 > ℹ️ **Versión de R recomendada:** R ≥ 4.2. La aplicación fue validada en Posit Connect Cloud con un consumo de RAM inferior al 32% del límite de la plataforma (1 GB).
 
----
-
-## Entregables
-
-Los notebooks funcionales, datos de prueba y documentación adicional están disponibles en:
-
-🔗 [Google Drive — Carpeta del proyecto](https://drive.google.com/drive/folders/1zzlrBigPaBVYG0INL5j1o3LK83jybY7i?usp=sharing)
-
----
-
-*Autor: Jonathan Panimboza Deleg · Técnico Especialista en Ciencias de la Tierra*  
-*Director: PhD. Rubén Basantes · Universidad de Investigación Tecnológica Experimental Yachay*
