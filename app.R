@@ -168,13 +168,13 @@ ui <- fluidPage(
                  Valores negativos indican pérdida, mientras que valores positivos indican
                  ganancia."),
         ),
-        tabPanel("Altura vs. Balance",
+        tabPanel("Relación Altura - Balance promedio",
                  br(),
                  plotlyOutput("balance_altura", height = "500px"),
                  br(),
                  p("Nota: El gráfico muestra la relación entre la altitud y el balance de masa promedio para los puntos de observación.")
         ),
-        tabPanel("Altura vs. Balance por año",
+        tabPanel("Relación Altura - Balance por año",
                  br(),
                  plotlyOutput("balance_altura_anual", height = "500px"),
                  p("Nota: El gráfico muestra la relación entre la altitud y el balance de masa anual para los puntos de observación.")
